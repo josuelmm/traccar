@@ -104,6 +104,11 @@ public class Position extends Message {
     public static final String KEY_DRIVER_UNIQUE_ID = "driverUniqueId";
     public static final String KEY_CARD = "card";
 
+    // Timestamp rollover compensation attributes
+    public static final String KEY_ROLLOVER_APPLIED = "rolloverApplied";
+    public static final String KEY_ROLLOVER_K = "rolloverK";
+    public static final String KEY_ROLLOVER_DELTA_SEC = "rolloverDeltaSec";
+
     // Start with 1 not 0
     public static final String PREFIX_TEMP = "temp";
     public static final String PREFIX_ADC = "adc";

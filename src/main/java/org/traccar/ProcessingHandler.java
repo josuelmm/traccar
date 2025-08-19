@@ -42,6 +42,7 @@ import org.traccar.handler.PositionForwardingHandler;
 import org.traccar.handler.PostProcessHandler;
 import org.traccar.handler.SpeedLimitHandler;
 import org.traccar.handler.TimeHandler;
+import org.traccar.handler.TimestampRolloverHandler;
 import org.traccar.handler.events.AlarmEventHandler;
 import org.traccar.handler.events.BaseEventHandler;
 import org.traccar.handler.events.BehaviorEventHandler;
@@ -96,6 +97,7 @@ public class ProcessingHandler extends ChannelInboundHandlerAdapter implements B
 
         positionHandlers = Stream.of(
                 ComputedAttributesHandler.Early.class,
+                TimestampRolloverHandler.class,
                 OutdatedHandler.class,
                 TimeHandler.class,
                 GeolocationHandler.class,

@@ -1570,6 +1570,44 @@ public final class Keys {
             List.of(KeyType.CONFIG));
 
     /**
+     * Enable automatic timestamp rollover compensation for devices with GPS week rollover issues.
+     * Devices like GT06N with MTK2503D processors may reset to 2006 dates due to internal counter rollover.
+     * Default value is true.
+     */
+    public static final ConfigKey<Boolean> TIME_ROLLOVER_AUTO = new BooleanConfigKey(
+            "time.rollover.auto",
+            List.of(KeyType.CONFIG, KeyType.DEVICE),
+            true);
+
+    /**
+     * Time window in days for considering a timestamp valid after rollover correction.
+     * Corrected timestamps must fall within this window relative to server time to be accepted.
+     * Default value is 90 days.
+     */
+    public static final ConfigKey<Integer> TIME_ROLLOVER_WINDOW_DAYS = new IntegerConfigKey(
+            "time.rollover.window.days",
+            List.of(KeyType.CONFIG, KeyType.DEVICE),
+            90);
+
+    /**
+     * GPS week rollover step in weeks. Default is 1024 weeks (GPS week rollover period).
+     * This represents the period after which GPS week counters reset, approximately 19.7 years.
+     */
+    public static final ConfigKey<Integer> TIME_ROLLOVER_STEP_WEEKS = new IntegerConfigKey(
+            "time.rollover.step.weeks",
+            List.of(KeyType.CONFIG, KeyType.DEVICE),
+            1024);
+
+    /**
+     * Maximum rollover correction multiple to attempt. Default is 2 (k=1, k=2).
+     * The system will try correction factors from 1 to this maximum value.
+     */
+    public static final ConfigKey<Integer> TIME_ROLLOVER_MAX_MULTIPLE = new IntegerConfigKey(
+            "time.rollover.max.multiple",
+            List.of(KeyType.CONFIG, KeyType.DEVICE),
+            2);
+
+    /**
      * Replaces coordinates with last known if change is less than a 'coordinates.minError' meters
      * or more than a 'coordinates.maxError' meters. Helps to avoid coordinates jumps during parking period
      * or jumps to zero coordinates.
